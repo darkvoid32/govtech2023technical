@@ -1,24 +1,3 @@
-# govtech2023technical
-
-Small repo for GovTech 2023 technical assessment to make URL shortener.
-
-## URL Shorterner
-```
-URL shortening is a web technique in which a Uniform Resource Location (URL) can have a substantial reduction in length, 
-providing a new unique URL that still directs to the specified web page. 
-The general idea is to reduce long web addresses into a shorter format that is easier to remember, track, share in messages or use in print work.
-```
-
-## Requirements
-
-The simply idea for this assessment is to have a simple input box for users to put in their URL, and the site will have to output the shortened URL.
-
-The tech used here is react and nodeJS backend, however a database should be used to ensure persistence.
-
-Some unit tests are also required.
-
-Limitations would include no security.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
