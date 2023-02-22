@@ -1,6 +1,6 @@
 import './App.css';
-import AddUrlComponent from "./components/AddUrlComponent";
-import ViewUrlComponent from "./components/ViewUrlCommpnent";
+import AddUrlComponent from "./components/AddUrl.js";
+import ViewUrlComponent from "./components/ViewUrl.js";
 
 function App() {
   return (

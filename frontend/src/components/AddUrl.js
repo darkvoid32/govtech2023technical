@@ -14,7 +14,7 @@ const AddUrlComponent = () => {
         }
 
         axios
-          .post("http://localhost:8080/api/shortenedUrl/create", {origUrl: url})
+          .post("http://localhost:8080/api/shortenedUrl/create", {fullUrl: url})
           .then(res => {
             console.log(res.data);
           })
