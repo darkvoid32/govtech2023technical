@@ -8,11 +8,11 @@ exports.create = (req, res) => {
   }
 
   const hasher = require('crypto');
-  const hash = hasher.createHash('md5').update(req.body.fullUrl).digest('hex');
+  const hash = hasher.createHash('md5').update(req.body.fullUrl).digest('hex').slice(0, 5);
 
   const shortenedUrl = new ShortenedUrl({
     fullUrl: req.body.fullUrl,
-    shortenedUrl: hash.slice(0, 10)
+    shortenedUrl: hash
   });
 
   shortenedUrl
