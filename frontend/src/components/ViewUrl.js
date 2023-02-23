@@ -1,41 +1,34 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
 import axios from "axios"
 
-const ViewUrlComponent= () => {
-    const [urls, setUrls] = useState([]);
 
+const ViewUrl= () => {
+    const [url, setUrl] = useState("");
+    const { shortenedUrl } = useParams();
+    
     useEffect(() => {
       const fetchUrlAndSetUrl = async () => {
-        const result = await axios.get("http://localhost:8080/api/shortenedUrl/");
-        setUrls(result.data);
+        const result = await axios.get("http://localhost:8080/api/shortenedUrl/" + shortenedUrl);
+        console.log(result.data[0].fullUrl)
+        setUrl(result.data[0].fullUrl);
       };
       fetchUrlAndSetUrl();
-    }, [urls]);
+    });
+
+    if (url) {
+      if (url.slice(0, 8) == "https://") {
+        window.location.replace(url)  
+      } else {
+        window.location.replace("https://" + url)
+      }
+    }
 
   return (
     <div>
-      <table className="table">
-        <thead className="table-dark">
-          <tr>
-            <th>Original Url</th>
-            <th>Short Url</th>
-            <th>Click Count</th>
-          </tr>
-        </thead>
-        <tbody>
-          {urls.map((url, idx) => (
-            <tr key={idx}>
-              <td>{url.origUrl}</td>
-              <td>
-                <a href={`${url.shortUrl}`}>{url.shortUrl}</a>
-              </td>
-              <td>{url.clicks}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <p>URL not found!</p>
     </div>
   );
 }
 
-export default ViewUrlComponent;
+export default ViewUrl;

@@ -1,13 +1,16 @@
 import './App.css';
-import AddUrlComponent from "./components/AddUrl.js";
-import ViewUrlComponent from "./components/ViewUrl.js";
+import AddUrl from "./components/AddUrl.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ViewUrl from "./components/ViewUrl.js";
 
 function App() {
   return (
-    <div className="App container mt-5">
-      <AddUrlComponent />
-      <ViewUrlComponent />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<AddUrl/>}/>
+        <Route path="/:shortenedUrl" element={<ViewUrl/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
