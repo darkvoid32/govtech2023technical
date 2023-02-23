@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 const AddUrl = () => {
     const [url, setUrl] = useState("");
@@ -30,33 +32,30 @@ const AddUrl = () => {
 
     let shortenedUrlText;
     if (shortenedUrl) {
-      shortenedUrlText = <p className="mb-2 fs-1">localhost:3000/{shortenedUrl}</p>
+      shortenedUrlText = <Link to={shortenedUrl}>localhost:3000/{shortenedUrl}</Link >
     } else {
-      shortenedUrlText = <p className="mb-2 fs-1"></p>
+      shortenedUrlText = <p></p>
     }
 
   return (
     <div>
       <main>
-        <section className="w-100 d-flex flex-column justify-content-center align-items-center">
-          <h1 className="mb-2 fs-1">URL Shortener</h1>
-          <form className="w-50" onSubmit={onSubmit}>
+          <h1>URL Shortener</h1>
+          <form onSubmit={onSubmit}>
             <input
-              className="w-100 border border-primary p-2 mb-2 fs-3 h-25"
               type="text"
               placeholder="www.google.com"
               value={url}
               onChange={e => setUrl(e.target.value)}
             />
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div>
             {shortenedUrlText}
-            
-            <button type="submit" className="btn btn-danger m-5">
+            <p/>
+            <button type="submit">
               Shorten!
             </button>
             </div>
           </form>
-        </section>
       </main>
     </div>
   );
